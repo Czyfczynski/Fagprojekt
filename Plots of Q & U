@@ -64,3 +64,151 @@ legend([e1 e2 e3 e4 e5 e6 e7],{'05/23','06/05','06/12','06/26 (1)','06/26 (2)','
 title('SLSN 2018')
 
 hold off
+
+%% SLSN 2018 ffj
+clear all
+
+% Samtlige punkter defineres
+Q1 = 0.838557085; U1 = -0.687551498;  errQ1 = 1.167302430;
+Q2 = -0.1065101315; U2 =-0.0164630462; err2 = 0.3821932632;
+Q3 = -0.8552155877; U3 = -0.2626136888; err3 = 0.4268611334;
+Q4 = 0.4875328420; U4 = -0.1819643381; err4 = 0.6531543520;
+Q5 = 0.4488651695; U5 = -0.9538771088; err5 = 0.6598837580;
+
+
+% Opretter errorbar for hver epoch
+e1 = errorbar(Q1,U1,errQ1,'both','.k','MarkerSize',30,'MarkerEdgeColor','b','Color','b');
+hold on
+e2 = errorbar(Q2,U2,err2,'both','.k','MarkerSize',30,'MarkerEdgeColor','k','Color','k');
+hold on
+e3 = errorbar(Q3,U3,err3,'both','.k','MarkerSize',30,'MarkerEdgeColor','r','Color','r');
+hold on
+e4 = errorbar(Q4,U4,err4,'both','.k','MarkerSize',30,'MarkerEdgeColor','g','Color','g');
+hold on
+e5 = errorbar(Q5,U5,err5,'both','.k','MarkerSize',30,'MarkerEdgeColor','c','Color','c');
+hold on
+
+% Tilpas akse-grænser
+axis([-2 2 -2 2])
+
+
+% Plotter cirkler og stiplede linjer langs x- og y-aksen. 
+grid
+hold on
+theta = linspace(0,2*pi,60);
+
+i=1;
+
+% Opretter loop, der printer dotted cirkler startede med radius 0.5 til 3
+% med et spring på 0.5 hver gang. 
+for i = 0.5:0.5:3
+    x = i*cos(theta);
+    y = i*sin(theta);
+    plot(x,y,'--k')
+    
+    %Tilføjer tekst ved hver cirkel. Teksten skal være lig i og størrelse
+    %18. 
+    h =text(i,0,sprintf('%1.1f',i),'FontSize',18)
+    
+    % Roterer teksten
+    set(h,'Rotation',-30)
+    hold on
+    
+end
+% Printer horisontal og vertikal dotted lines 
+x = linspace(-3,3,30);
+plot(x,0*ones(size(x)),'--k')
+plot(0*ones(size(x)),x,'--k')
+xlabel('Q (%)')
+ylabel('U(%)')
+% Notationen gør, at det kun er funktionerne inde i klammerne, der får
+% legends. Disse legends nævnes så i rækkefølge med ''. 
+legend([e1 e2 e3 e4 e5],{'08/25','09/07 (1)','09/07 (2)','09/18 (1)','09/18(2)'})
+title('SLSN 2018')
+
+hold off
+
+%% SLSN 2017 (galakse)
+clear all
+
+% Samtlige punkter defineres
+Q1 = 0.4766707313; U1 = -0.1689216893;  errQ1 = 0.1202624780;
+Q2 = 0.5181907402; U2 =-0.04618424064; err2 = 0.1133705561;
+Q3 = 0.2001720982; U3 = -0.2664923569; err3 = 0.1411364622;
+Q4 = 0.7049397882; U4 = -0.2445325598; err4 = 0.1157848844;
+Q5 = 0.7741000187; U5 = -0.6414811081; err5 = 0.1357147061;
+Q6 = 0.549075338; U6 = 0.889369413; err6 = 0.1897794051;
+Q7 = 0.8529858223; U7 = -0.08848632203; err7 = 0.1426314674;
+
+
+% Med følgende kommando kan man få hver en farve ud i triplets, der så kan
+% bruges i plottet
+%c = uisetcolor([0.6 0.8 1])
+% Nedenstående er blot eksempler på farver
+% Mørkegrøn = [0.0431    0.6118    0.0431]
+% Brun = [0.8510 0.3255 0.0980]
+% Gulgrøn = [0.7020 0.7020 0.2941]
+
+% Opretter errorbar for hver epoch
+% Prøv at følg dette system: 
+% MarkerEdgeColor er kuglens farve. Denne indikerer hvilket spektrum der er
+% observeret i (R, I eller V). 
+% Color angiver farven på selve error-baren. Denne indikerer hivlken dato
+% målingen er foretaget på
+
+e1 = errorbar(Q1,U1,errQ1,'both','.k','MarkerSize',30,'MarkerEdgeColor',[0.7020 0.7020 0.2941],'Color',[0.7020 0.7020 0.2941],'LineWidth',1.6);
+hold on
+e2 = errorbar(Q2,U2,err2,'both','.k','MarkerSize',30,'MarkerEdgeColor','r','Color','k','LineWidth',1.6);
+hold on
+e3 = errorbar(Q3,U3,err3,'both','.k','MarkerSize',30,'MarkerEdgeColor',[0.0431    0.6118    0.0431],'Color','k','LineWidth',1.6);
+hold on
+e4 = errorbar(Q4,U4,err4,'both','.k','MarkerSize',30,'MarkerEdgeColor','b','Color','k','LineWidth',1.6);
+hold on
+e5 = errorbar(Q5,U5,err5,'both','.k','MarkerSize',30,'MarkerEdgeColor','r','Color',[0.8510 0.3255 0.0980],'LineWidth',1.6);
+hold on
+e6 = errorbar(Q6,U6,err6,'both','.k','MarkerSize',30,'MarkerEdgeColor',[0.0431    0.6118    0.0431],'Color',[0.8510 0.3255 0.0980],'LineWidth',1.6);
+hold on
+e7 = errorbar(Q7,U7,err7,'both','.k','MarkerSize',30,'MarkerEdgeColor','b','Color',[0.8510 0.3255 0.0980],'LineWidth',1.6);
+hold on
+
+
+% Tilpas akse-grænser
+axis([-1 1.5 -1 1.5])
+
+
+% Plotter cirkler og stiplede linjer langs x- og y-aksen. 
+grid
+hold on
+theta = linspace(0,2*pi,60);
+
+i=1;
+
+% Opretter loop, der printer dotted cirkler startede med radius 0.5 til 3
+% med et spring på 0.5 hver gang. 
+for i = 0.5:0.5:3
+    x = i*cos(theta);
+    y = i*sin(theta);
+    plot(x,y,'--k')
+    
+    %Tilføjer tekst ved hver cirkel. Teksten skal være lig i og størrelse
+    %18. 
+    h =text(i,0,sprintf('%1.1f',i),'FontSize',18)
+    
+    % Roterer teksten
+    set(h,'Rotation',-30)
+    hold on
+    
+end
+
+% Printer horisontal og vertikal dotted lines 
+x = linspace(-3,3,30);
+plot(x,0*ones(size(x)),'--k')
+plot(0*ones(size(x)),x,'--k')
+xlabel('Q (%)')
+ylabel('U(%)')
+% Notationen gør, at det kun er funktionerne inde i klammerne, der får
+% legends. Disse legends nævnes så i rækkefølge med ''. 
+legend([e1 e2 e3 e4 e5 e6 e7],{'06/17','06.19 (R)','06.19 (I)','06.19 (V)','06.29 (R)','06.29 (I)','06.29 (V)'})
+title('SLSN 2018')
+
+hold off
